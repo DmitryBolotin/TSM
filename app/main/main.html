@@ -1,0 +1,83 @@
+
+<form  ng-submit="vm.addCase(case)" class="form-inline" ng-repeat="case in vm.cases"  ng-show="case.isPrimary" style="margin-left: 50px">
+    <div class="form-group">
+        <label for="caseId">CaseId*</label>
+        <input id="caseId" class="form-control" required  type="text"  ng-model="case.caseId"  placeholder="Enter caseId" />
+    </div>
+    <div class="form-group">
+        <label for="caseDescription">Case description</label>
+        <input id="caseDescription" class="form-control" type="text" ng-model="case.caseDescription" placeholder="Enter case description"/>
+    </div>
+    <div class="form-group">
+        <label for="calendar">Selected date</label>
+        <input  id="calendar" class="form-control"  type="date" ng-model="vm.calendar"  ng-show="case.isPrimary" ng-change="vm.getWeekDays(vm.calendar)" required/>
+    </div>
+    <div  class="form-group" style="margin-top: 25px">
+        <input type="submit" class="btn" ng-value="'Create case'"  readonly />
+    </div>
+     <span class="help-block">
+ *- required fields
+  </span>
+</form>
+
+
+<table class="table table-hover"  style="margin-top: 30px" >
+    <thead>
+    <tr>
+        <td><b>Manage</b></td>
+        <td><b>CaseId</b></td>
+        <td><b>Description</b></td>
+        <td ng-repeat="item in vm.currentWeekDays" >
+            <div ng-class="{weekend:item.isWeekend, currentDate: vm.highlightDate(item.NumberOfDay)}">
+                <i>
+                   Day:
+                    <b >{{item.NameOfDay}}</b>
+                </i>
+                <br/>
+                  Date:
+                <b>{{item.NumberOfDay}}</b>
+                <br/>
+                  Hours:
+                <b>{{item.hoursSum}}</b>
+            </div>
+        </td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  ng-repeat="case in vm.cases | filter: vm.query " ng-show="!case.isPrimary&& case.caseIsShown">
+        <div class="form-inline"   style="margin: 10px 0px 0px 50px">
+                <label for="search"  >Search: </label>
+                <div class="form-group">
+                <input id="search" class="form-control"  type="text" ng-model="vm.query" placeholder="Enter caseId"  />
+                </div>
+                <input type="button" class="btn btn-info" ng-value="'Show'"  readonly ng-click="vm.showCases(vm.query)" />
+                 <input type="button" class="btn btn-warning" ng-value="'Show All for Week'"  readonly ng-click="vm.showAllCasesForCurrentWeek()" />
+        </div>
+        <td>
+            <div ng-show="vm.isEditMode">
+                <input type="submit" class="btn btn-info" ng-value="'Edit'"  readonly ng-click="vm.updateViewMode()" />
+                <input type="button" class="btn btn-danger" ng-value="'Hide'"  readonly ng-click="vm.hideCases(case)" />
+            </div>
+            <div ng-hide="vm.isEditMode">
+                <input type="submit" class="btn btn-info" ng-value="'Update'"  readonly  ng-click="vm.updateCaseId(case)" />
+                <input type="reset" class="btn btn-danger" ng-value="'Cancel'"  readonly ng-click="vm.updateViewMode()" />
+            </div>
+
+        </td>
+        <td>
+            {{case.caseId}}
+        </td>
+        <td>
+            <i>{{case.caseDescription}}</i>
+        </td>
+        <td ng-repeat="i in [0,1,2,3,4,5,6]" >
+            <input type="text" style="width:40px" ng-model="case.caseHours[i]" ng-class="{weekendBackground:i >= 5}" ng-readonly="vm.isEditMode" ng-show="vm.isCurrentWeekForCases(case)" />
+            <input type="text" style="width:40px" value="0" ng-class="{weekendBackground:i >= 5}"  ng-readonly="vm.isEditMode" ng-show="!vm.isCurrentWeekForCases(case)" />
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    </tbody>
+</table>

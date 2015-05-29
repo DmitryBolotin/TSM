@@ -1,0 +1,12 @@
+/* app css stylesheet */
+
+.weekend{
+    color:red;
+}
+.weekendBackground{
+    background:lightblue;
+}
+.currentDate{
+    color: navy;
+    font-weight: bold;
+ }

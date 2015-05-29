@@ -1,0 +1,41 @@
+<form class="form-inline"  name="reportForm" ng-submit="vm.getReport()">
+    <div class="form-group"  ng-class="{'has-error': reportForm.reportStartPeriod.$invalid || (vm.calendarStartDate.getDate()>vm.calendarEndDate.getDate())}">
+      <label for="startPeriod">Start Period*</label>
+      <input class="form-control" name="reportStartPeriod" type="date" id="startPeriod" ng-model="vm.calendarStartDate" required />
+    </div>
+    <div class="form-group" ng-class="{'has-error': reportForm.reportStartPeriod.$invalid || (vm.calendarStartDate.getDate()>vm.calendarEndDate.getDate())}">
+      <label for="endPeriod">End Period*</label>
+      <input  class="form-control" name="reportEndPeriod" type="date" id="endPeriod"  ng-model="vm.calendarEndDate" required />
+    </div>
+    <div class="form-group" style="margin-top: 25px">
+      <input type="submit" class="btn"  value="Generate" ng-disabled="(vm.calendarStartDate.getDate()>vm.calendarEndDate.getDate())" />
+    </div>
+  <span class="help-block">
+ *- required fields
+  </span>
+  <span class="help-block has-error">
+                <span ng-show="vm.calendarStartDate.getDate()>vm.calendarEndDate.getDate()" style="color:red">
+                    Start Period cannot be bigger then End Period
+                </span>
+            </span>
+</form>
+
+
+
+<table class="table table-hover" style="margin: 100px 0px 0px 50px" >
+  <thead>
+  <tr>
+    <td><b>CaseId</b></td>
+    <td><b>Hours</b></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  ng-repeat="case in vm.casesList" >
+      <td>{{case.caseId}}</td>
+      <td>{{case.caseSumOfHours}}</td>
+
+  </tr>
+
+
+  </tbody>
+</table>
