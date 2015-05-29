@@ -15,6 +15,7 @@
 
             vm.isEditMode = true;
 
+
             vm.cases =  casesAddUpdate.fetch();
 
 

@@ -17,7 +17,7 @@
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" ng-hide="vm.isLoginPage">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,7 +46,7 @@
 
   <div style="margin-top: 80px" ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <!--<div>Angular seed app: v<span app-version></span></div>-->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -58,6 +58,7 @@
   <script src="bower_components/other/bootstrap.js"></script>
   <script src="bower_components/other/toastr.min.js"></script>
   <script src="app.js"></script>
+  <script src="login/login.js"></script>
   <script src="main/main.js"></script>
   <script src="report/report.js"></script>
   <script src="admin/admin.js"></script>
