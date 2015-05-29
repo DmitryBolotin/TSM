@@ -11,7 +11,7 @@
       }])
 
       .controller('ReportCtrl', ['$scope','casesAddUpdate',function($scope,casesAddUpdate) {
-          console.log("ReportCtrl");
+        //  console.log("ReportCtrl");
 
           var vm = this;
 
@@ -129,7 +129,15 @@
               };
               vm.defineWholeSumCases();
 
-
+              vm.casesTotal = function () {
+                  vm.showTotal = true;
+                  var total = 0;
+                  vm.casesListJoined.forEach(function (item) {
+                      total = total + item.caseSumOfHours;
+                  });
+                  return total;
+              };
+              vm.casesTotal();
 
               if(vm.calendarStartDate.getFullWeek().w != vm.calendarEndDate.getFullWeek().w){
                   vm.casesList = vm.casesListJoined.slice();

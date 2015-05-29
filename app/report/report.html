@@ -35,7 +35,10 @@
       <td>{{case.caseSumOfHours}}</td>
 
   </tr>
-
-
+  <tr ng-show="vm.showTotal">
+      <td></td>
+      <td><b>Total: {{vm.casesTotal()}}</b></td>
+  </tr>
   </tbody>
 </table>
+

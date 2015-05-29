@@ -9,11 +9,9 @@
         return {
             notifySuccess: function(msg) {
                 toastr.success(msg);
-                console.log(msg);
             },
             notifyWarning: function(msg) {
                 toastr.warning(msg);
-                console.log(msg);
             }
 
 

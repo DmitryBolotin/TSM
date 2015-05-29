@@ -12,7 +12,6 @@
         Cases.prototype.register = function () {
          //  if(userId == this.userId){ console.log("matched userId = " + userId);}
             this.isPrimary = false;
-            console.log("register from casesResource");
             this.$save();
         };
         return Cases;
