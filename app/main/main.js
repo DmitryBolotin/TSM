@@ -56,12 +56,16 @@
                 vm.updateQuery();
             };
 
-            vm.showCases = function (query) {
+            vm.showCases = function (caseId) {
                vm.cases.forEach(function(item) {
-                       if(item.caseId == query){
+                       console.log(caseId);
+                       if(item.caseId == caseId && item.caseWeek == vm.calendar.getFullWeek().w ){
                            Notifier.notifySuccess("CaseId = " + item.caseId +" has been shown");
                            item.caseIsShown = true;
                            item.register();
+                       }
+                       else if(item.caseId==undefined || item.caseId==""){
+                           Notifier.notifyWarning("Filled caseId cannot be found");
                        }
                     }
                 );

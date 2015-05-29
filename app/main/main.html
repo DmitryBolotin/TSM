@@ -45,7 +45,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr  ng-repeat="case in vm.cases | filter: vm.query " ng-show="!case.isPrimary&& case.caseIsShown">
+    <tr  ng-repeat="case in vm.cases | filter: vm.query " ng-show="!case.isPrimary&& case.caseIsShown && vm.isCurrentWeekForCases(case)">
         <div class="form-inline"   style="margin: 10px 0px 0px 50px">
                 <label for="search"  >Search: </label>
                 <div class="form-group">
@@ -73,10 +73,7 @@
         </td>
         <td ng-repeat="i in [0,1,2,3,4,5,6]" >
             <input type="text" style="width:40px" ng-model="case.caseHours[i]" ng-class="{weekendBackground:i >= 5}" ng-readonly="vm.isEditMode" ng-show="vm.isCurrentWeekForCases(case)" />
-            <input type="text" style="width:40px" value="0" ng-class="{weekendBackground:i >= 5}"  ng-readonly="vm.isEditMode" ng-show="!vm.isCurrentWeekForCases(case)" />
-        </td>
-        <td>
-
+            <!--<input type="text" style="width:40px" value="0" ng-class="{weekendBackground:i >= 5}"  ng-readonly="vm.isEditMode" ng-show="!vm.isCurrentWeekForCases(case)" />-->
         </td>
     </tr>
     </tbody>

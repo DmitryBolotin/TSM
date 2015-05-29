@@ -17,13 +17,6 @@
 
           vm.casesForReport = casesAddUpdate.fetch();
 
-          /////------
-
-
-
-
-
-          ///------
 
           Date.prototype.getFullWeek = function(){
               var jan1, w, d = new Date(this);

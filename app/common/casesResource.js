@@ -15,12 +15,6 @@
             console.log("register from casesResource");
             this.$save();
         };
-
-        Cases.prototype.getCasesInfo = function () {
-           this.$get();
-        };
-
-
         return Cases;
     }
 

@@ -1,1 +1,1 @@
-{"userId":"","caseId":"123456","caseDescription":"test desc","caseWeek":19,"caseYear":2015,"caseHours":["5","5","5","5","5","5","5"],"caseIsShown":false,"isPrimary":false}
+{"userId":"","caseId":"123456","caseDescription":"test desc","caseWeek":19,"caseYear":2015,"caseHours":["5","5","5","5","5","5","5"],"caseIsShown":true,"isPrimary":false}
